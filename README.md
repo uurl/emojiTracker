@@ -85,13 +85,13 @@ Esto debería dar como resultado un arreglo JSON con todos los _conectores_ de K
 
 ```json
 [
-  ...,
+  . . .
   {
     "class": "com.github.jcustenborder.kafka.connect.twitter.TwitterSourceConnector",
     "type": "source",
     "version": "0.2.26"
   }
-  ...,
+  . . .
 ]
 ```
 
@@ -162,7 +162,7 @@ El resultado no está en un orden particular y la salida debe parecerse a lo sig
 
 ```json
 [
-    ...,
+    . . .
     {
         "emoji": "🐾",
         "count": 144
@@ -191,7 +191,7 @@ El resultado no está en un orden particular y la salida debe parecerse a lo sig
         "emoji": "💥",
         "count": 90
     },
-    ...
+    . . .
 ]
 ```
 
@@ -261,7 +261,7 @@ curl -X GET http://localhost:8881/interactive/queries/emojis/stats/topN
         "emoji": "🔥",
         "count": 17
     },
-    ...
+    . . .
 ]
 ```
 _NOTA: Obviamente los números obtenidos varían_
@@ -277,19 +277,19 @@ curl -X GET http://localhost:8881/interactive/queries/emojis/updates/notify
 
 ```json
 
-...
-
-data: {"emoji": "🌎","count": 18}
-
-data: {"emoji": "💀","count": 200}
+. . .
 
 data: {"emoji": "❤","count": 67}
 
-data: {"emoji": "👇","count": 56}
+data: {"emoji": "💀","count": 200}
+
+data: {"emoji": "🌎","count": 18}
 
 data: {"emoji": "🔥","count": 98}
 
-...
+data: {"emoji": "👇","count": 56}
+
+. . .
 
 ```
 
