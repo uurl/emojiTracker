@@ -15,7 +15,7 @@ Los siguientes párrafos dan una explicación detallada paso a paso para configu
 #### 1. Iniciar el entorno Kafka:
 La aplicación necesita un entorno Kafka funcional, idealmente en local. Si te gustan los contenedores y sabes cómo usar Docker, puedes usar las imágenes Docker preconstruidas de Apache Kafka (por ejemplo, las proporcionadas por [Confluent](https://hub.docker.com/r/confluentinc/)). Por simplicidad, es mejor iniciar todos los procesos de Kafka en la [CLI](https://docs.confluent.io/current/cli/index.html) que viene con la versión de código abierto de la [Confluent's Platform](https://www.confluent.io/download/)
 
-Muévete a la carpeta de instalación (por ejemplo, /usr/local/confluent-4.1.0/) y ejecuta
+Muévete a la carpeta de instalación (por ejemplo, /usr/local/confluent-4.1.1/) y ejecuta
 
 ```bash
 bin/confluent start
@@ -60,7 +60,7 @@ kafka-connect-twitter-0.2.26/usr/share/kafka-connect/kafka-connect-twitter
 hasta
 
 ```bash
-/usr/local/confluent-4.1.0/share/java/
+/usr/local/confluent-4.1.1/share/java/
 ```
 
 Para que kafka connect pueda detectar la disponibilidad de este conector recién instalado, hay que reiniciar el proceso _connect_ con la CLI ejecutando:
@@ -203,7 +203,7 @@ Al usar CURL, es necesario especificar el emoji por medio de su código de escap
 http://localhost:8881/interactive/queries/emojis/😂
 
 ```bash
-curl -X GET http://localhost:8881/interactive/queries/emojis/%F0%9F%91%87 
+curl -X GET http://localhost:8881/interactive/queries/emojis/%F0%9F%98%82
 ```
 
 {
@@ -279,15 +279,15 @@ curl -X GET http://localhost:8881/interactive/queries/emojis/updates/notify
 
 ...
 
-data: {"emoji": "🌎","count": 77}
+data: {"emoji": "🌎","count": 18}
 
-data: {"emoji": "💀","count": 29}
+data: {"emoji": "💀","count": 200}
 
-data: {"emoji": "❤","count": 64}
+data: {"emoji": "❤","count": 67}
 
-data: {"emoji": "👇","count": 113}
+data: {"emoji": "👇","count": 56}
 
-data: {"emoji": "🔥","count": 17}
+data: {"emoji": "🔥","count": 98}
 
 ...
 
