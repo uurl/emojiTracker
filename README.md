@@ -3,10 +3,10 @@
 ## Resumen
 Este repositorio contiene un ejemplo práctico de cómo crear una aplicación moderna centrada en datos para rastrear la aparición de emojis en los tweets públicos en casi tiempo real. Utiliza principalmente las siguientes tecnologías:
 
-- Ingestión de datos: [Apache Kafka Connect] (https://kafka.apache.org/documentation/#connect)
-- Persistencia: [Apacha Kafka] (https://kafka.apache.org)
-- Procesamiento de streams: [Apacha Kafka Streams] (https://kafka.apache.org/documentation/streams/)
-- Capa de integración RPC y WebAPI reactiva: [Spring Boot 2.0] (https://projects.spring.io/spring-boot/)
+- Ingestión de datos: [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect)
+- Persistencia: [Apacha Kafka](https://kafka.apache.org)
+- Procesamiento de streams: [Apacha Kafka Streams](https://kafka.apache.org/documentation/streams/)
+- Capa de integración RPC y WebAPI reactiva: [Spring Boot 2.0](https://projects.spring.io/spring-boot/)
 
 ## Ejemplo de uso:
 
@@ -81,7 +81,7 @@ Ahora el conector de Twitter está listo para usarse. Se puede configurar y admi
 curl http://localhost:8083/connector-plugins
 ```
 
-Esto debería dar como resultado un arreglo JSON con todos los _conectores_ de Kafka connect actualmente disponibles para su instalación. En algún lugar entre las líneas, verás el conector de Twitter:
+Esto debería dar como resultado un arreglo JSON con todos los _conectores_ de Kafka connect actualmente disponibles para su instalación. En algún lugar entre las líneas está el conector de Twitter:
 
 ```json
 [
@@ -95,7 +95,7 @@ Esto debería dar como resultado un arreglo JSON con todos los _conectores_ de K
 ]
 ```
 
-Como son demasiados, podemos ejecutar el conector para rastrear un subconjunto de tweets en vivo relacionados con algunas palabras clave (modificando la entrada **filter.keywords**) en función de la siguiente configuración de JSON. Simplemente hay que insertar los tokens /secrets_OAuth que obtienen al crear una aplicación de Twitter con una cuenta. Esto es lo primero que debes crear para obtener acceso a la API de Twitter. Envía la configuración JSON como una solicitud POST usando CURL o Postman:
+Como son demasiados tweets, podemos ejecutar el conector para rastrear un subconjunto de tweets en vivo relacionados con algunas palabras clave (modificando la entrada **filter.keywords**) en función de la siguiente configuración de JSON. Simplemente hay que insertar los tokens /secrets_OAuth que obtienen al crear una aplicación de Twitter con una cuenta. Esto es lo primero que debes crear para obtener acceso a la API de Twitter. Envía la configuración JSON como una solicitud POST usando CURL o Postman:
 
 ```json
 { "name": "twitter_source_01",
@@ -152,44 +152,44 @@ java -jar -Dserver.port=8881 -Dkstreams.tweetsTopic=live-tweets target/emojiTrac
 #### 6. Consultar interactivamente el estado de la aplicación kstreams
 Después de que la aplicación se haya iniciado correctamente, puedes realizar llamadas REST para consultar el recuento de emojis:
 
-##### consulta para todos los emojis rastreados hasta el momento:
+##### Para consultar todos los emojis rastreados hasta el momento:
 
 ```bash
 curl -X GET http://localhost:8881/interactive/queries/emojis/
 ```
 
-El resultado no está en un orden particular y se parecerse a lo siguiente según una ejecución de muestra:
+El resultado no está en un orden particular y la salida debe parecerse a lo siguiente:
 
 ```json
 [
     ...,
     {
-        "emoji": "�",
-        "count": 4
+        "emoji": "🐾",
+        "count": 144
     },
     {
-        "emoji": "�",
-        "count": 113
+        "emoji": "👇",
+        "count": 256
     },
     {
-        "emoji": "�",
-        "count": 16
+        "emoji": "👉",
+        "count": 140
     },
     {
-        "emoji": "�",
-        "count": 29
+        "emoji": "💀",
+        "count": 800
     },
     {
-        "emoji": "�",
-        "count": 1
+        "emoji": "💋",
+        "count": 30
     },
     {
-        "emoji": "�",
-        "count": 1
+        "emoji": "💖",
+        "count": 0
     },
     {
-        "emoji": "�",
-        "count": 2
+        "emoji": "💥",
+        "count": 90
     },
     ...
 ]
@@ -200,15 +200,15 @@ _NOTA: Obviamente los números obtenidos varían_
 ##### Consultar un emoji específico hasta el momento:
 Al usar CURL, es necesario especificar el emoji por medio de su código de escape URL. Por tanto, es más conveniente consultar con Postman o un navegador, ya que esto permite colocar directamente los emojis en la URL.
 
-http://localhost:8881/interactive/queries/emojis/�
+http://localhost:8881/interactive/queries/emojis/😂
 
 ```bash
 curl -X GET http://localhost:8881/interactive/queries/emojis/%F0%9F%91%87 
 ```
 
 {
-    "emoji": "�",
-    "count": 113
+    "emoji": "😂",
+    "count": 1000
 }
 
 _NOTA: Obviamente los números obtenidos varían_
@@ -222,11 +222,11 @@ curl -X GET http://localhost:8881/interactive/queries/emojis/stats/topN
 ```json
 [
     {
-        "emoji": "�",
-        "count": 113
+        "emoji": "😂",
+        "count": 256
     },
     {
-        "emoji": "�",
+        "emoji": "😭",
         "count": 100
     },
     {
@@ -242,15 +242,15 @@ curl -X GET http://localhost:8881/interactive/queries/emojis/stats/topN
         "count": 79
     },
     {
-        "emoji": "�",
+        "emoji": "🌎",
         "count": 77
     },
     {
-        "emoji": "�",
+        "emoji": "👉",
         "count": 64
     },
     {
-        "emoji": "�",
+        "emoji": "💀",
         "count": 29
     },
     {
@@ -258,7 +258,7 @@ curl -X GET http://localhost:8881/interactive/queries/emojis/stats/topN
         "count": 21
     },
     {
-        "emoji": "�",
+        "emoji": "🔥",
         "count": 17
     },
     ...
@@ -279,15 +279,15 @@ curl -X GET http://localhost:8881/interactive/queries/emojis/updates/notify
 
 ...
 
-data: {"emoji": "�","count": 77}
+data: {"emoji": "🌎","count": 77}
 
-data: {"emoji": "�","count": 29}
+data: {"emoji": "💀","count": 29}
 
-data: {"emoji": "�","count": 64}
+data: {"emoji": "❤","count": 64}
 
-data: {"emoji": "�","count": 113}
+data: {"emoji": "👇","count": 113}
 
-data: {"emoji": "�","count": 17}
+data: {"emoji": "🔥","count": 17}
 
 ...
 
@@ -303,4 +303,4 @@ Por ejemplo, para iniciar una segunda instancia:
 java -jar -Dserver.port=8882 -Dlive.demo.instance.id=2 -Dkstreams.tweetsTopic=live-tweets target/emojiTracker-1.0-SNAPSHOT.jar
 ```
 
-Ahora puedes consultar cualquiera de las dos instancias para obtener los resultados del recuento de emojis
+Ahora puedes consultar cualquiera de las dos instancias para obtener los resultados del recuento de emojis.
