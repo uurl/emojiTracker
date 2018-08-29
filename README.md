@@ -85,12 +85,14 @@ Esto debería dar como resultado un arreglo JSON con todos los _conectores_ de K
 
 ```json
 [
+
   ...
   {
     "class": "com.github.jcustenborder.kafka.connect.twitter.TwitterSourceConnector",
     "type": "source",
     "version": "0.2.26"
   }
+
   ...
 ]
 ```
